@@ -28,11 +28,36 @@
     [源码:#link("https://github.com/Arshtyi/SDU-Algorithm-Design-And-Analysis").],
     [本课程作业来自#link("https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", "The Book"). 本书的所有题解都容易找到,作者仅记录题目.],
 )
+#show strong: it => {
+    set text(weight: "bold")
+    it
+}
+
+#let (ll) = (
+    sym.lt.eq.slant
+)
+
 = No.1
 #question()[
-    (_22.2-2_)Show the $d$ and $pi$ values that result from running breadth-first search on the undirected graph of Figure 22.3, using vertex $u$ as the source.
+    (_22.2-2_) Show the $d$ and $pi$ values that result from running breadth-first search on the undirected graph of Figure 22.3, using vertex $u$ as the source.
 ]
 
 #question()[
-    (_22.2-8_)The _#text(weight: "bold")[diameter]_ of a tree $T=(V,E)$ is defined as $max_(u,v in V) delta(u, v)$, that is, the largest of all shortest-path distances in the tree. Give an efficient algorithm to compute the diameter of a tree, and analyze the running time of your algorithm.
+    (_22.2-8_) The *_diameter_* of a tree $T=(V,E)$ is defined as $max_(u,v in V) delta(u, v)$, that is, the largest of all shortest-path distances in the tree. Give an efficient algorithm to compute the diameter of a tree, and analyze the running time of your algorithm.
+]
+= No.2
+#question()[
+    (_22.3-2_) Show how depth-first search works on the graph of Figure 22.6. Assume that the *for* loop of lines $5-7$ of the *DFS* procedure considers the vertices in alphabetical order, and assume that each adjacency list is ordered alphabetically. Show the discovery and finishing times for each vertex, and show the classification of each edge.
+]
+
+#question()[
+    (_22.3-8_) Give a counterexample to the conjecture that if a directed graph $G$ contains a path from $u$ to $v$, and if $u.d < v.d$ in a depth-first search of $G$, then $v$ is a descendant of $u$ in the depth-first forest produced.
+]
+
+#question()[
+    (_22.3-9_) Give a counterexample to the conjecture that if a directed graph $G$ contains a path from $u$ to $v$, then any depth-first search must result in $v.d ll u.f$.
+]
+
+#question()[
+    (_22.3-13_) A directed graph $G = (V, E)$ is *_singly connected_* if $u arrow.r.squiggly v$ implies that $G$ contains at most one simple path from $u$ to $v$ for all vertices $u, v in V$. Give an efficient algorithm to determine whether or not a directed graph is singly connected.
 ]
