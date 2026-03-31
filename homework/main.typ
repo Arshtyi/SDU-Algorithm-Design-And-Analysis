@@ -1,4 +1,4 @@
-#import "@preview/ezexam:0.2.9": *
+#import "@preview/ezexam:0.3.0": *
 #import "@preview/zebraw:0.6.1": *
 #import "@preview/subpar:0.2.2"
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
@@ -13,10 +13,7 @@
     mode: EXAM,
     resume: false,
 )
-#show link: it => {
-    set text(fill: blue)
-    underline(offset: 2.5pt, it)
-}
+#show link: it => text(fill: blue.darken(20%))[#underline(it)]
 
 #title[
     山东大学计算机科学与技术学院 \
@@ -24,8 +21,8 @@
 ]
 
 #notice(
-    [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.2.9")作模板.],
-    [源码:#link("https://github.com/Arshtyi/SDU-Algorithm-Design-And-Analysis").],
+    [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.3.0")作模板.],
+    [源码:#link("https://github.com/arshtyi/SDU-Algorithm-Design-And-Analysis").],
     [本课程作业来自#link("https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", "The Book"). 本书的所有题解都容易找到,作者仅记录题目.],
 )
 #show strong: it => {
@@ -75,5 +72,5 @@
 ]
 
 #question()[
-    (_22.5-7_) A directed graph $G = (V, E)$ is *_semiconnected_* if, for all pairs of vertices $u, v \in V$, we have $u arrow.r.squiggly v$ or $v arrow.r.squiggly u$. Give an efficient algorithm to determine whether or not $G$ is semiconnected. Prove that your algorithm is correct, and analyze its running time.
+    (_22.5-7_) A directed graph $G = (V, E)$ is *_semiconnected_* if, for all pairs of vertices $u, v in V$, we have $u arrow.r.squiggly v$ or $v arrow.r.squiggly u$. Give an efficient algorithm to determine whether or not $G$ is semiconnected. Prove that your algorithm is correct, and analyze its running time.
 ]
