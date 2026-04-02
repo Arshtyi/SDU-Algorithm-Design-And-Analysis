@@ -1,20 +1,20 @@
 #import "@preview/ezexam:0.3.0": *
-#import "@preview/zebraw:0.6.1": *
-// #import "@preview/subpar:0.2.2"
-// #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-// #import "@preview/pinit:0.2.2": *
+// #import "@preview/lovelace:0.3.1": *
+// 如果有一个介于lavelace和algorithmic之间的包就好了(,后者其实更加接近一般的pseudocode样式,但是确实不太适合用于此处(指L95)
+#import "@preview/algorithmic:1.0.7"
+#import algorithmic: algorithm-figure, style-algorithm
 
 #set page(height: auto)
 #set par(justify: true)
 #set smartquote(quotes: "\"\"")
 
-#show: zebraw
 #show: setup.with(
     mode: EXAM,
     resume: false,
     ref-color: blue,
 )
 #show link: it => text(fill: blue.darken(20%))[#underline(it)]
+#show: style-algorithm
 
 #title[
     山东大学计算机科学与技术学院 \
@@ -24,7 +24,7 @@
 #notice(
     [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.3.0")作模板.],
     [源码:#link("https://github.com/arshtyi/SDU-Algorithm-Design-And-Analysis").],
-    [本课程作业来自#link("https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", "The Book"). 本书的所有题解都容易找到,作者仅记录题目.],
+    [本课程作业来自#link("https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", "The Book"). 本书的所有题解都容易找到,作者仅按自己的想法记录题目.],
 )
 #show strong: it => {
     set text(weight: "bold")
@@ -92,6 +92,51 @@
 
 #question()[
     (_23-4_)  In this problem, we give pseudocode for three different algorithms. Each one takes a connected graph and a weight function as input and returns a set of edges $T$. For each algorithm, either prove that $T$ is a minimum spanning tree or prove that $T$ is not a minimum spanning tree. Also describe the most efficient implementation of each algorithm, whether or not it computes a minimum spanning tree.
+    #algorithm-figure(
+        "MAYBE-MST-A",
+        vstroke: .5pt + luma(200),
+        {
+            import algorithmic: *
+            Procedure("MAYBE-MST-A", ("G", "w"), {
+                Comment[sort the edges into nonincreasing order of edge weights $w$]
+                Assign[$T$][$E$]
+                For($"edge" e ,"taken in nonincreasing order by weight"$, {
+                    If($T - {e} "is a connected graph"$, {
+                        Assign[$T$][$T - {e}$]
+                    })
+                })
+                Return[$T$]
+            })
+        },
+    )
+    #algorithm-figure("MAYBE-MST-B", vstroke: .5pt + luma(200), {
+        import algorithmic: *
+        Procedure("MAYBE-MST-B", ("G", "w"), {
+            Assign[$T$][$nothing$]
+            For($"edge" e ,"taken in arbitrary order"$, {
+                If($T union {e} "has no cycles"$, {
+                    Assign[$T$][$T union {e}$]
+                })
+            })
+            Return[$T$]
+        })
+    })
+    #algorithm-figure("MAYBE-MST-C", vstroke: .5pt + luma(200), {
+        import algorithmic: *
+        Procedure("MAYBE-MST-C", ("G", "w"), {
+            Assign[$T$][$nothing$]
+            For($"edge" e ,"taken in arbitrary order"$, {
+                Assign[$T$][$T union {e}$]
+                If($T "has a cycle" c$, {
+                    Assign[$e'$][$"a maximum-weight edge on" c$]
+                    Assign[$T$][$T - {e'}$]
+                })
+            })
+            Return[$T$]
+        })
+    })
+
+    /*
     #set enum(numbering: n => emph(strong(numbering("a.", n))))
 
     + MAYBE-MST-A(G, w)
@@ -121,4 +166,5 @@
                 T = T - {e}
         return T
         ```
+    */
 ]
