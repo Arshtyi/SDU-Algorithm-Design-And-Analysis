@@ -21,7 +21,7 @@
 #exam-info(info: (班级: "24智能", 教师: "姜海涛"))
 #notice(
     [出于方便使用#link("https://github.com/gbchu/ezexam", "gbchu/ezexam:0.3.1")作模板.],
-    [源码:#link("https://github.com/arshtyi/SDU-Algorithm-Design-And-Analysis").],
+    [源码:#link("https://github.com/arshtyi/SDU-Algorithm-Design-And-Analysis", "source").],
     [本课程作业来自#link("https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/", "The Book"). 本书的所有题解都容易找到,作者仅按自己的想法记录题目.],
 )
 
